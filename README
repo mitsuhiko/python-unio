@@ -12,4 +12,49 @@ What it gives you:
     handle all encodings for you and come with sensible defaults
   * helper functions to deal with all of the crazy Python 3 unicode
     encoding edge cases
-  * sane APIs to work with filesystem paths on 2.x and 3.x
+
+Basic API:
+
+unio.TextIO:
+  gives the most appropriate in-memory text io (accepts only unicode)
+unio.BytesIO:
+  gives the most appropriate in-memory bytes io (accepts only bytes)
+unio.NativeIO:
+  gives the most appropriate in-memory IO for the system.  That's bytes
+  only on Python 3 and bytes + unicode within reason on Python 2.
+
+unio.get_binary_stdin()
+unio.get_binary_stdout()
+unio.get_binary_stderr()
+  Does what the name says, on all platforms.
+
+unio.get_text_stdin()
+unio.get_text_stdout()
+unio.get_text_stderr()
+  Returns a standard stream wrapped in a way that it yields unicode data.
+  It will do that in the most appropriate encoding and intelligently fix
+  some broken environments to utf-8.  You can also force the encoding to
+  be something of your choice this way.
+
+unio.capture_stdout()
+  Captures stdout (and optionally stderr) in a bytes io and provides some
+  fixes for Python 3 limitations on flushing.
+
+unio.get_binary_argv()
+  Returns a copy of sys.argv fixed up to bytes on all versions of Python.
+
+unio.binary_env
+  A byte version of os.environ on all python envs.
+
+unio.open()
+  Intelligently opens a file in binary or text mode, by following sane
+  default encodings and the same behavior on 2.x and 3.x.  The default
+  encoding for text files is utf-8 or utf-8-sig based on the mode.  No
+  magic environment defaults.
+
+unio.is_ascii_encoding()
+  Checks if a given encoding is ascii or not.
+
+unio.get_filesystem_encoding()
+  Like sys.getdefaultencoding() but will intelligently assume utf-8 in
+  situations where it assumes a broken environment.

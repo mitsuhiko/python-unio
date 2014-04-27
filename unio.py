@@ -152,7 +152,7 @@ if PY2:
         return sys.stderr
 
     def get_binary_argv():
-        return sys.argv
+        return list(sys.argv)
 
     def get_text_stdin(encoding=None, errors=None):
         return _make_text_stream(sys.stdin, encoding, errors)
