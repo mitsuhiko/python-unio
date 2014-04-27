@@ -1,9 +1,9 @@
-uni-unicode!
+unIO!
 
-  uni-unicode is a Python module that tries to set an end to all unicode
-  problems.  What it does is providing explicit access to binary and
-  unicode data for both Python 2 and 3 that work exactly the same on both
-  systems and considerably better than the builtin defaults.
+  unio is a Python module that tries to set an end to all unicode
+  problems.  What it does is providing explicit access to binary and unicode
+  data for both Python 2 and 3 that work exactly the same on both systems and
+  considerably better than the builtin defaults.
 
 What it gives you:
 
