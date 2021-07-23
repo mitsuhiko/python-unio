@@ -65,7 +65,7 @@ def get_std_stream_encoding():
 
 
 class BrokenEnvironment(Exception):
-    """This error is raised on Python 3 if the system was malconfigured
+    """This error is raised on Python 3 if the system was misconfigured
     beyond repair.
     """
 
@@ -203,7 +203,7 @@ else:
         except Exception:
             return default
             # This happens in some cases where the stream was already
-            # closed.  In this case we assume the defalt.
+            # closed.  In this case we assume the default.
 
     def _is_binary_writer(stream, default=False):
         try:
@@ -219,7 +219,7 @@ else:
 
     def _find_binary_reader(stream):
         # We need to figure out if the given stream is already binary.
-        # This can happen because the official docs recommend detatching
+        # This can happen because the official docs recommend detaching
         # the streams to get binary streams.  Some code might do this, so
         # we need to deal with this case explicitly.
         is_binary = _is_binary_reader(stream, False)
@@ -235,7 +235,7 @@ else:
 
     def _find_binary_writer(stream):
         # We need to figure out if the given stream is already binary.
-        # This can happen because the official docs recommend detatching
+        # This can happen because the official docs recommend detaching
         # the streams to get binary streams.  Some code might do this, so
         # we need to deal with this case explicitly.
         if _is_binary_writer(stream, False):
